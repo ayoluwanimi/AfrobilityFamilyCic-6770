@@ -1,6 +1,13 @@
 import { Route, Switch } from "wouter";
 import Index from "./pages/index";
 import Donate from "./pages/donate";
+import SignIn from "./pages/sign-in";
+import SignUp from "./pages/sign-up";
+import AdminDashboard from "./pages/admin/dashboard";
+import DonationTracker from "./pages/admin/donations";
+import FinancialSummary from "./pages/admin/finance";
+import BookingManagement from "./pages/admin/bookings";
+import ContentCMS from "./pages/admin/cms";
 import { Provider } from "./components/provider";
 
 function App() {
@@ -9,6 +16,13 @@ function App() {
                         <Switch>
                                 <Route path="/" component={Index} />
                                 <Route path="/donate" component={Donate} />
+                                <Route path="/sign-in" component={SignIn} />
+                                <Route path="/sign-up" component={SignUp} />
+                                <Route path="/admin" component={AdminDashboard} />
+                                <Route path="/admin/donations" component={DonationTracker} />
+                                <Route path="/admin/finance" component={FinancialSummary} />
+                                <Route path="/admin/bookings" component={BookingManagement} />
+                                <Route path="/admin/cms" component={ContentCMS} />
                         </Switch>
                 </Provider>
         );
