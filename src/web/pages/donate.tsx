@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { useCustomer, CheckoutDialog } from "autumn-js/react";
 import { authClient } from "@/lib/auth";
+import { Footer } from "@/components/footer";
 
 export default function Donate() {
         const [amount, setAmount] = useState<string | null>(null);
@@ -201,6 +202,7 @@ export default function Donate() {
                                         </div>
                                 </div>
                         </section>
+                        <Footer />
                 </main>
         );
 }

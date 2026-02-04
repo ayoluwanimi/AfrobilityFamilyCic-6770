@@ -3,6 +3,8 @@ import Index from "./pages/index";
 import Donate from "./pages/donate";
 import SignIn from "./pages/sign-in";
 import SignUp from "./pages/sign-up";
+import PrivacyPolicy from "./pages/privacy";
+import TermsOfService from "./pages/terms";
 import AdminDashboard from "./pages/admin/dashboard";
 import DonationTracker from "./pages/admin/donations";
 import FinancialSummary from "./pages/admin/finance";
@@ -19,6 +21,8 @@ function App() {
                                 <Route path="/donate" component={Donate} />
                                 <Route path="/sign-in" component={SignIn} />
                                 <Route path="/sign-up" component={SignUp} />
+                                <Route path="/privacy" component={PrivacyPolicy} />
+                                <Route path="/terms" component={TermsOfService} />
                                 <Route path="/admin" component={AdminDashboard} />
                                 <Route path="/admin/donations" component={DonationTracker} />
                                 <Route path="/admin/finance" component={FinancialSummary} />
