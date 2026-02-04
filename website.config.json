@@ -1,1 +1,16 @@
-{"id":"7woaurtvdcsguxwkx3amfc3pwrusk7fz","name":"My Website","description":"A website built with Runable","url":"https://example.com","ogImage":"/og-image.png","favicon":"/vite.svg","twitter":{"card":"summary_large_image","site":"@runable"},"themeColor":"#000000","previewPort":4588,"previewUrl":"https://4588-ipfrx0dbeqqiwtuktfx79.e2b.app"}
+{
+  "id": "7woaurtvdcsguxwkx3amfc3pwrusk7fz",
+  "name": "Afrobility Family CIC | United in Care",
+  "description": "Emotional and practical support for families navigating disability. Culturally sensitive resources for African and Caribbean communities.",
+  "url": "https://afrobility.org",
+  "ogImage": "/og-image.png",
+  "favicon": "/favicon.ico",
+  "twitter": {
+    "card": "summary_large_image",
+    "site": "@afrobility"
+  },
+  "themeColor": "#D4AF37",
+  "keywords": "Disability Support for African Families, Caribbean Community Resources, African Families Mental Health, Community Services, Afrobility Family CIC",
+  "previewPort": 4588,
+  "previewUrl": "https://4588-ipfrx0dbeqqiwtuktfx79.e2b.app"
+}

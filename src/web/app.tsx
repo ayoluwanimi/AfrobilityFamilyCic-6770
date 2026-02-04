@@ -8,6 +8,7 @@ import DonationTracker from "./pages/admin/donations";
 import FinancialSummary from "./pages/admin/finance";
 import BookingManagement from "./pages/admin/bookings";
 import ContentCMS from "./pages/admin/cms";
+import UserManagement from "./pages/admin/users";
 import { Provider } from "./components/provider";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                                 <Route path="/admin/finance" component={FinancialSummary} />
                                 <Route path="/admin/bookings" component={BookingManagement} />
                                 <Route path="/admin/cms" component={ContentCMS} />
+                                <Route path="/admin/users" component={UserManagement} />
                         </Switch>
                 </Provider>
         );

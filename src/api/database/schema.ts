@@ -34,3 +34,15 @@ export const articles = sqliteTable("articles", {
     publishedAt: integer("published_at", { mode: "timestamp" }),
     createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
 });
+
+export const events = sqliteTable("events", {
+    id: text("id").primaryKey(),
+    title: text("title").notNull(),
+    date: integer("date", { mode: "timestamp" }).notNull(),
+    location: text("location").notNull(),
+    description: text("description").notNull(),
+    capacity: integer("capacity"),
+    registrationLink: text("registration_link"),
+    status: text("status").notNull().default("Draft"), // 'Published', 'Draft'
+    createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
+});

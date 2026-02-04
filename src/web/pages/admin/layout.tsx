@@ -8,7 +8,8 @@ import {
   CalendarCheck, 
   FileText, 
   LogOut,
-  ChevronRight
+  ChevronRight,
+  Users
 } from 'lucide-react';
 
 interface AdminLayoutProps {
@@ -41,6 +42,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     { href: '/admin/finance', label: 'Financial Summary', icon: Wallet },
     { href: '/admin/bookings', label: 'Bookings', icon: CalendarCheck },
     { href: '/admin/cms', label: 'Content CMS', icon: FileText },
+    { href: '/admin/users', label: 'Staff Management', icon: Users },
   ];
 
   const handleLogout = async () => {

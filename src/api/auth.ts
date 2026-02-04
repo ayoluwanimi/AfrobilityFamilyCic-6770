@@ -1,6 +1,7 @@
 import { betterAuth } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { drizzle } from 'drizzle-orm/d1';
+import { autumn } from "autumn-js/better-auth";
 import * as schema from './database/schema';
 
 export const createAuth = (baseURL: string) => {
@@ -13,6 +14,9 @@ export const createAuth = (baseURL: string) => {
     emailAndPassword: {
       enabled: true,
     },
+    plugins: [
+      autumn()
+    ],
     secret: env.BETTER_AUTH_SECRET || "fallback-secret-for-schema-gen",
     baseURL,
     trustedOrigins: async (request) => {
@@ -36,7 +40,8 @@ export const auth = (() => {
         provider: "sqlite",
         dialect: "sqlite"
       },
-      emailAndPassword: { enabled: true }
+      emailAndPassword: { enabled: true },
+      plugins: [autumn()]
     });
   }
 })();
