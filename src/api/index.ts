@@ -83,8 +83,8 @@ app.get('/setup-admin', async (c) => {
   }
 });
 
-app.use(authMiddleware)
 app.route('/', authRoutes);
+app.use('/cms/*', authMiddleware);
 app.route('/cms', cmsRoutes);
 
 app.get('/ping', (c) => c.json({ message: `Pong! ${Date.now()}` }));

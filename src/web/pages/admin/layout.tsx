@@ -36,16 +36,20 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
   if (isPending) {
     return (
-      <div className="min-h-screen bg-charcoal flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-mustard"></div>
+      <div className="min-h-screen bg-charcoal flex flex-col items-center justify-center text-white">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-mustard mb-4"></div>
+        <p className="font-sans text-gray-400 animate-pulse">Verifying session...</p>
       </div>
     );
   }
 
   if (!session) {
     return (
-      <div className="min-h-screen bg-charcoal flex items-center justify-center text-white">
-        <p className="animate-pulse font-serif text-xl">Redirecting to sign in...</p>
+      <div className="min-h-screen bg-charcoal flex flex-col items-center justify-center text-white p-4 text-center">
+        <p className="animate-pulse font-serif text-xl mb-4">Redirecting to sign in...</p>
+        <Link href="/sign-in">
+          <button className="text-mustard hover:underline text-sm">Click here if you are not redirected</button>
+        </Link>
       </div>
     );
   }
