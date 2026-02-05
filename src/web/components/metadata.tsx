@@ -8,11 +8,14 @@ export function Metadata() {
                         <meta name="keywords" content={(siteConfig as any).keywords} />
 
                         {/* Open Graph */}
+                        <meta property="og:site_name" content="Afrobility Family CIC" />
                         <meta property="og:title" content={siteConfig.name} />
                         <meta property="og:description" content={siteConfig.description} />
                         <meta property="og:image" content={siteConfig.ogImage} />
                         <meta property="og:url" content={siteConfig.url} />
                         <meta property="og:type" content="website" />
+                        <meta property="og:image:width" content="1200" />
+                        <meta property="og:image:height" content="630" />
 
                         {/* Twitter */}
                         <meta name="twitter:card" content={siteConfig.twitter.card} />

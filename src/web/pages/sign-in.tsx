@@ -77,7 +77,8 @@ export default function SignIn() {
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-mustard hover:bg-mustard/90 text-charcoal font-bold py-3 rounded-lg transition-all transform hover:scale-[1.02] active:scale-[0.98]"
+            variant="secondary"
+            className="w-full font-bold py-3 rounded-lg transition-all transform hover:scale-[1.02] active:scale-[0.98] hover:bg-mustard/90"
           >
             {isSubmitting ? 'Authenticating...' : 'Sign In to Dashboard'}
           </Button>

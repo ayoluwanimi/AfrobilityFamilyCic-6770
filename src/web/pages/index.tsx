@@ -24,7 +24,7 @@ function Navbar() {
                                 </div>
 
                                 <div className="hidden lg:block">
-                                        <Button className="bg-mustard text-charcoal hover:bg-mustard/90 font-bold px-6 py-5 rounded-full text-base">
+                                        <Button variant="secondary" className="hover:bg-mustard/90 font-bold px-6 py-5 rounded-full text-base">
                                                 Get Involved
                                         </Button>
                                 </div>
@@ -62,7 +62,7 @@ function Navbar() {
                                                         <a href="#events" onClick={() => setIsOpen(false)} className="hover:text-mustard transition-colors">Events</a>
                                                         <a href="/donate" onClick={() => setIsOpen(false)} className="hover:text-mustard transition-colors">Donate</a>
                                                 </div>
-                                                <Button className="bg-mustard text-charcoal hover:bg-mustard/90 font-bold py-8 rounded-2xl text-2xl w-full mt-4">
+                                                <Button variant="secondary" className="hover:bg-mustard/90 font-bold py-8 rounded-2xl text-2xl w-full mt-4">
                                                         Get Involved
                                                 </Button>
                                         </div>
@@ -98,7 +98,7 @@ function Hero() {
                                         </p>
 
                                         <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                                                <Button size="lg" className="bg-mustard text-charcoal hover:bg-mustard/90 font-bold h-14 px-8 rounded-xl text-lg group">
+                                                <Button size="lg" variant="secondary" className="hover:bg-mustard/90 font-bold h-14 px-8 rounded-xl text-lg group">
                                                         Get Involved
                                                         <Heart className="ml-2 group-hover:scale-110 transition-transform fill-charcoal" />
                                                 </Button>

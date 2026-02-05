@@ -187,11 +187,12 @@ export default function Donate() {
                                                         </div>
 
                                                         <div className="pt-4">
-                                                                <Button 
-                                                                        onClick={handleDonate}
-                                                                        disabled={isProcessing || (!amount && !customAmount)}
-                                                                        className="w-full bg-mustard text-charcoal hover:bg-mustard/90 font-black text-xl py-8 rounded-2xl shadow-lg shadow-mustard/20 transition-all hover:-translate-y-1"
-                                                                >
+                                                                        <Button 
+                                                                                onClick={handleDonate}
+                                                                                disabled={isProcessing || (!amount && !customAmount)}
+                                                                                variant="secondary"
+                                                                                className="w-full font-black text-xl py-8 rounded-2xl shadow-lg shadow-mustard/20 transition-all hover:-translate-y-1 hover:bg-mustard/90"
+                                                                        >
                                                                         {isProcessing ? "Processing..." : `Donate £${amount || customAmount || "0"} ${frequency === "monthly" ? "/ Month" : "Now"}`}
                                                                 </Button>
                                                                 <p className="text-center text-gray-400 text-sm mt-6">

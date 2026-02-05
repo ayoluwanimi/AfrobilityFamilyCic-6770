@@ -42,7 +42,13 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     );
   }
 
-  if (!session) return null;
+  if (!session) {
+    return (
+      <div className="min-h-screen bg-charcoal flex items-center justify-center text-white">
+        <p className="animate-pulse font-serif text-xl">Redirecting to sign in...</p>
+      </div>
+    );
+  }
 
   const navItems = [
     { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
@@ -129,7 +135,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       <main className="flex-1 p-4 md:p-8 overflow-x-hidden">
         <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 md:mb-10 gap-4">
           <div>
-            <h2 className="text-2xl md:text-3xl font-serif">Welcome back, {session.user.name.split(' ')[0]}</h2>
+            <h2 className="text-2xl md:text-3xl font-serif">Welcome back, {session?.user?.name?.split(' ')[0] || 'Admin'}</h2>
             <p className="text-gray-400 text-sm md:text-base">Managing Afrobility Family CIC</p>
           </div>
           <div className="flex items-center gap-4">
@@ -137,7 +143,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
               {new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' })}
             </div>
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-mustard flex items-center justify-center text-charcoal font-bold shadow-lg shadow-mustard/20">
-              {session.user.name.charAt(0)}
+              {session?.user?.name?.charAt(0) || 'A'}
             </div>
           </div>
         </header>
