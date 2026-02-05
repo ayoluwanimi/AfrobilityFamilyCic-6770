@@ -54,6 +54,15 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     );
   }
 
+  // Ensure session data is available
+  if (!session?.user) {
+    return (
+      <div className="min-h-screen bg-charcoal flex flex-col items-center justify-center text-white">
+        <p className="text-gray-400">Loading user data...</p>
+      </div>
+    );
+  }
+
   const navItems = [
     { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
     { href: '/admin/donations', label: 'Donation Tracker', icon: HeartHandshake },
@@ -152,9 +161,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
           </div>
         </header>
 
-        <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-          {children}
-        </div>
+        {children}
       </main>
     </div>
   );
