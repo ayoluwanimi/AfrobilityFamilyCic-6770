@@ -86,3 +86,16 @@
     @apply font-serif;
   }
 }
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: var(--dash-offset, 0);
+  }
+}
+
+.animate-dash {
+  animation: dash 2s ease-in-out forwards;
+}

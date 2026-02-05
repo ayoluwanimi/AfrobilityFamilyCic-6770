@@ -39,16 +39,33 @@ function Navbar() {
 
                         {/* Mobile Menu */}
                         {isOpen && (
-                                <div className="lg:hidden fixed inset-0 top-20 bg-charcoal z-40 flex flex-col p-6 space-y-8 animate-in slide-in-from-top duration-300">
-                                        <div className="flex flex-col space-y-6 text-2xl font-serif font-bold text-white">
-                                                <a href="#services" onClick={() => setIsOpen(false)} className="hover:text-mustard">Services</a>
-                                                <a href="#blog" onClick={() => setIsOpen(false)} className="hover:text-mustard">Insights</a>
-                                                <a href="#events" onClick={() => setIsOpen(false)} className="hover:text-mustard">Events</a>
-                                                <a href="/donate" onClick={() => setIsOpen(false)} className="hover:text-mustard">Donate</a>
+                                <div className="lg:hidden fixed inset-0 bg-charcoal z-[100] flex flex-col animate-in fade-in duration-300">
+                                        <div className="container mx-auto px-6 h-20 flex items-center justify-between border-b border-white/5">
+                                                <div className="flex items-center gap-2">
+                                                        <div className="w-10 h-10 bg-mustard rounded-full flex items-center justify-center">
+                                                                <Heart className="text-charcoal fill-charcoal size-6" />
+                                                        </div>
+                                                        <span className="text-white font-serif text-xl font-bold tracking-tight">Afrobility</span>
+                                                </div>
+                                                <button 
+                                                        className="text-white p-2"
+                                                        onClick={() => setIsOpen(false)}
+                                                >
+                                                        <X size={32} />
+                                                </button>
                                         </div>
-                                        <Button className="bg-mustard text-charcoal hover:bg-mustard/90 font-bold py-8 rounded-2xl text-xl w-full">
-                                                Get Involved
-                                        </Button>
+                                        
+                                        <div className="flex-1 flex flex-col p-6 justify-center space-y-12">
+                                                <div className="flex flex-col space-y-8 text-4xl font-serif font-black text-white">
+                                                        <a href="#services" onClick={() => setIsOpen(false)} className="hover:text-mustard transition-colors">Services</a>
+                                                        <a href="#blog" onClick={() => setIsOpen(false)} className="hover:text-mustard transition-colors">Insights</a>
+                                                        <a href="#events" onClick={() => setIsOpen(false)} className="hover:text-mustard transition-colors">Events</a>
+                                                        <a href="/donate" onClick={() => setIsOpen(false)} className="hover:text-mustard transition-colors">Donate</a>
+                                                </div>
+                                                <Button className="bg-mustard text-charcoal hover:bg-mustard/90 font-bold py-8 rounded-2xl text-2xl w-full mt-4">
+                                                        Get Involved
+                                                </Button>
+                                        </div>
                                 </div>
                         )}
                 </nav>

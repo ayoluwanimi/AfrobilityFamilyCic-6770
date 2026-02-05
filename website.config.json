@@ -2,9 +2,9 @@
   "id": "7woaurtvdcsguxwkx3amfc3pwrusk7fz",
   "name": "Afrobility Family CIC | United in Care",
   "description": "Emotional and practical support for families navigating disability. Culturally sensitive resources for African and Caribbean communities.",
-  "url": "https://afrobility.org",
+  "url": "https://afrobilityfamilycic.com",
   "ogImage": "/og-image.png",
-  "favicon": "/favicon.ico",
+  "favicon": "/logo.png",
   "twitter": {
     "card": "summary_large_image",
     "site": "@afrobility"
@@ -12,5 +12,5 @@
   "themeColor": "#D4AF37",
   "keywords": "Disability Support for African Families, Caribbean Community Resources, African Families Mental Health, Community Services, Afrobility Family CIC",
   "previewPort": 4588,
-  "previewUrl": "https://4588-ipfrx0dbeqqiwtuktfx79.e2b.app"
+  "previewUrl": "https://afrobilityfamilycic.com"
 }

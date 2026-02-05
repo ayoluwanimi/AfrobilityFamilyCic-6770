@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { useLocation, Link } from 'wouter';
 import { authClient } from '../../lib/auth';
 import { 
@@ -9,7 +9,9 @@ import {
   FileText, 
   LogOut,
   ChevronRight,
-  Users
+  Users,
+  Menu,
+  X
 } from 'lucide-react';
 
 interface AdminLayoutProps {
@@ -19,12 +21,18 @@ interface AdminLayoutProps {
 export default function AdminLayout({ children }: AdminLayoutProps) {
   const [location, setLocation] = useLocation();
   const { data: session, isPending } = authClient.useSession();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     if (!isPending && !session) {
       setLocation('/sign-in');
     }
   }, [session, isPending, setLocation]);
+
+  // Close sidebar on location change (mobile)
+  useEffect(() => {
+    setIsSidebarOpen(false);
+  }, [location]);
 
   if (isPending) {
     return (
@@ -51,17 +59,42 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   };
 
   return (
-    <div className="min-h-screen bg-charcoal text-white flex">
+    <div className="min-h-screen bg-charcoal text-white flex flex-col md:flex-row">
+      {/* Mobile Header */}
+      <div className="md:hidden bg-[#1A1A1A] border-b border-white/5 p-4 flex items-center justify-between sticky top-0 z-30">
+        <Link href="/">
+          <h1 className="text-xl font-serif text-mustard font-bold">Afrobility</h1>
+        </Link>
+        <button 
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          className="p-2 text-gray-400 hover:text-white"
+        >
+          {isSidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      </div>
+
+      {/* Sidebar Overlay */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
       {/* Sidebar */}
-      <aside className="w-64 bg-[#1A1A1A] border-r border-white/5 flex flex-col fixed inset-y-0 shadow-xl z-20">
-        <div className="p-6">
+      <aside className={`
+        fixed inset-y-0 left-0 w-64 bg-[#1A1A1A] border-r border-white/5 flex flex-col shadow-xl z-50 transition-transform duration-300 ease-in-out
+        ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+        md:translate-x-0 md:static md:h-screen
+      `}>
+        <div className="p-6 hidden md:block">
           <Link href="/">
-            <h1 className="text-2xl font-serif text-mustard cursor-pointer">Afrobility</h1>
+            <h1 className="text-2xl font-serif text-mustard cursor-pointer font-bold">Afrobility</h1>
           </Link>
           <p className="text-xs text-gray-500 mt-1 uppercase tracking-widest">Admin Control</p>
         </div>
 
-        <nav className="flex-1 px-4 space-y-2 mt-4">
+        <nav className="flex-1 px-4 space-y-2 mt-4 md:mt-0">
           {navItems.map((item) => {
             const isActive = location === item.href;
             return (
@@ -93,17 +126,17 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 ml-64 p-8">
-        <header className="flex justify-between items-center mb-10">
+      <main className="flex-1 p-4 md:p-8 overflow-x-hidden">
+        <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 md:mb-10 gap-4">
           <div>
-            <h2 className="text-3xl font-serif">Welcome back, {session.user.name.split(' ')[0]}</h2>
-            <p className="text-gray-400">Managing Afrobility Family CIC</p>
+            <h2 className="text-2xl md:text-3xl font-serif">Welcome back, {session.user.name.split(' ')[0]}</h2>
+            <p className="text-gray-400 text-sm md:text-base">Managing Afrobility Family CIC</p>
           </div>
           <div className="flex items-center gap-4">
-            <div className="bg-[#1A1A1A] px-4 py-2 rounded-full border border-white/5 text-sm text-gray-400">
+            <div className="bg-[#1A1A1A] px-4 py-2 rounded-full border border-white/5 text-xs md:text-sm text-gray-400">
               {new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' })}
             </div>
-            <div className="w-10 h-10 rounded-full bg-mustard flex items-center justify-center text-charcoal font-bold shadow-lg shadow-mustard/20">
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-mustard flex items-center justify-center text-charcoal font-bold shadow-lg shadow-mustard/20">
               {session.user.name.charAt(0)}
             </div>
           </div>
