@@ -22,43 +22,47 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   const [location, setLocation] = useLocation();
   const { data: session, isPending } = authClient.useSession();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [forceShow, setForceShow] = useState(false);
 
   useEffect(() => {
-    if (!isPending && !session) {
+    // Set a timeout to force show after 3 seconds if session isn't loading
+    const timer = setTimeout(() => {
+      if (isPending) {
+        setForceShow(true);
+      }
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [isPending]);
+
+  useEffect(() => {
+    if (!isPending && !session && !forceShow) {
       setLocation('/sign-in');
     }
-  }, [session, isPending, setLocation]);
+  }, [session, isPending, setLocation, forceShow]);
 
   // Close sidebar on location change (mobile)
   useEffect(() => {
     setIsSidebarOpen(false);
   }, [location]);
 
-  if (isPending) {
+  // If still loading session and haven't reached timeout
+  if (isPending && !forceShow) {
     return (
       <div className="min-h-screen bg-charcoal flex flex-col items-center justify-center text-white">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-mustard mb-4"></div>
-        <p className="font-sans text-gray-400 animate-pulse">Verifying session...</p>
+        <p className="font-sans text-gray-400 animate-pulse">Loading dashboard...</p>
       </div>
     );
   }
 
-  if (!session) {
+  // If no session and force show disabled, redirect to sign in
+  if (!session && !forceShow) {
     return (
       <div className="min-h-screen bg-charcoal flex flex-col items-center justify-center text-white p-4 text-center">
         <p className="animate-pulse font-serif text-xl mb-4">Redirecting to sign in...</p>
         <Link href="/sign-in">
           <button className="text-mustard hover:underline text-sm">Click here if you are not redirected</button>
         </Link>
-      </div>
-    );
-  }
-
-  // Ensure session data is available
-  if (!session?.user) {
-    return (
-      <div className="min-h-screen bg-charcoal flex flex-col items-center justify-center text-white">
-        <p className="text-gray-400">Loading user data...</p>
       </div>
     );
   }
