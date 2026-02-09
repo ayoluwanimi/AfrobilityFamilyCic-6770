@@ -22,6 +22,7 @@ function Navbar() {
                                         <a href="#services" className="hover:text-mustard transition-colors">Services</a>
                                         <a href="#blog" className="hover:text-mustard transition-colors">Insights</a>
                                         <a href="#events" className="hover:text-mustard transition-colors">Events</a>
+                                        <Link href="/booking" className="hover:text-mustard transition-colors text-white/70 font-medium">Book</Link>
                                         <Link href="/donate" className="hover:text-mustard transition-colors text-white/70 font-medium">Donate</Link>
                                 </div>
 
@@ -64,6 +65,7 @@ function Navbar() {
                                                         <a href="#services" onClick={() => setIsOpen(false)} className="hover:text-mustard transition-colors">Services</a>
                                                         <a href="#blog" onClick={() => setIsOpen(false)} className="hover:text-mustard transition-colors">Insights</a>
                                                         <a href="#events" onClick={() => setIsOpen(false)} className="hover:text-mustard transition-colors">Events</a>
+                                                        <Link href="/booking" onClick={() => setIsOpen(false)} className="hover:text-mustard transition-colors">Book</Link>
                                                         <Link href="/donate" onClick={() => setIsOpen(false)} className="hover:text-mustard transition-colors">Donate</Link>
                                                 </div>
                                                 <Link href="/donate" onClick={() => setIsOpen(false)}>
@@ -112,8 +114,7 @@ function Hero({ onOpenMission }: { onOpenMission: () => void }) {
                                                 </Link>
                                                 <Button 
                                                         size="lg" 
-                                                        variant="outline" 
-                                                        className="border-white/20 text-white hover:bg-white/10 h-14 px-8 rounded-xl text-lg"
+                                                        className="bg-[#E49B0F] text-white hover:bg-[#E49B0F]/90 font-bold h-14 px-8 rounded-xl text-lg"
                                                         onClick={onOpenMission}
                                                 >
                                                         Our Mission
@@ -207,7 +208,7 @@ function Services() {
                                                                         {service.description}
                                                                 </p>
                                                                 
-                                                                <Link href="/donate">
+                                                                <Link href="/booking">
                                                                         <Button className="w-full bg-charcoal text-white hover:bg-mustard hover:text-charcoal font-bold py-6 rounded-xl transition-all duration-300">
                                                                                 Book Now
                                                                         </Button>

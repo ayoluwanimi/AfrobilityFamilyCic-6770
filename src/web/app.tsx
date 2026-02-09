@@ -1,6 +1,7 @@
 import { Route, Switch } from "wouter";
 import Index from "./pages/index";
 import Donate from "./pages/donate";
+import Booking from "./pages/booking";
 import SignIn from "./pages/sign-in";
 import SignUp from "./pages/sign-up";
 import PrivacyPolicy from "./pages/privacy";
@@ -19,6 +20,7 @@ function App() {
                         <Switch>
                                 <Route path="/" component={Index} />
                                 <Route path="/donate" component={Donate} />
+                                <Route path="/booking" component={Booking} />
                                 <Route path="/sign-in" component={SignIn} />
                                 <Route path="/sign-up" component={SignUp} />
                                 <Route path="/privacy" component={PrivacyPolicy} />
