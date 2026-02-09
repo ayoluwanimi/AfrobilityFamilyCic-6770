@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Heart, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Footer } from "@/components/footer";
+import { Link } from "wouter";
+import { MissionModal } from "@/components/mission-modal";
 
 function Navbar() {
         const [isOpen, setIsOpen] = useState(false);
@@ -20,13 +22,15 @@ function Navbar() {
                                         <a href="#services" className="hover:text-mustard transition-colors">Services</a>
                                         <a href="#blog" className="hover:text-mustard transition-colors">Insights</a>
                                         <a href="#events" className="hover:text-mustard transition-colors">Events</a>
-                                        <a href="/donate" className="hover:text-mustard transition-colors">Donate</a>
+                                        <Link href="/donate" className="hover:text-mustard transition-colors text-white/70 font-medium">Donate</Link>
                                 </div>
 
                                 <div className="hidden lg:block">
-                                        <Button variant="secondary" className="hover:bg-mustard/90 font-bold px-6 py-5 rounded-full text-base">
-                                                Get Involved
-                                        </Button>
+                                        <Link href="/donate">
+                                                <Button variant="secondary" className="hover:bg-mustard/90 font-bold px-6 py-5 rounded-full text-base text-charcoal">
+                                                        Get Involved
+                                                </Button>
+                                        </Link>
                                 </div>
 
                                 <button 
@@ -60,11 +64,13 @@ function Navbar() {
                                                         <a href="#services" onClick={() => setIsOpen(false)} className="hover:text-mustard transition-colors">Services</a>
                                                         <a href="#blog" onClick={() => setIsOpen(false)} className="hover:text-mustard transition-colors">Insights</a>
                                                         <a href="#events" onClick={() => setIsOpen(false)} className="hover:text-mustard transition-colors">Events</a>
-                                                        <a href="/donate" onClick={() => setIsOpen(false)} className="hover:text-mustard transition-colors">Donate</a>
+                                                        <Link href="/donate" onClick={() => setIsOpen(false)} className="hover:text-mustard transition-colors">Donate</Link>
                                                 </div>
-                                                <Button variant="secondary" className="hover:bg-mustard/90 font-bold py-8 rounded-2xl text-2xl w-full mt-4">
-                                                        Get Involved
-                                                </Button>
+                                                <Link href="/donate" onClick={() => setIsOpen(false)}>
+                                                        <Button variant="secondary" className="hover:bg-mustard/90 font-bold py-8 rounded-2xl text-2xl w-full mt-4 text-charcoal">
+                                                                Get Involved
+                                                        </Button>
+                                                </Link>
                                         </div>
                                 </div>
                         )}
@@ -72,7 +78,7 @@ function Navbar() {
         );
 }
 
-function Hero() {
+function Hero({ onOpenMission }: { onOpenMission: () => void }) {
         return (
                 <section className="relative min-h-screen pt-20 flex items-center bg-charcoal overflow-hidden">
                         {/* Decorative elements */}
@@ -98,11 +104,18 @@ function Hero() {
                                         </p>
 
                                         <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                                                <Button size="lg" variant="secondary" className="hover:bg-mustard/90 font-bold h-14 px-8 rounded-xl text-lg group">
-                                                        Get Involved
-                                                        <Heart className="ml-2 group-hover:scale-110 transition-transform fill-charcoal" />
-                                                </Button>
-                                                <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 h-14 px-8 rounded-xl text-lg">
+                                                <Link href="/donate">
+                                                        <Button size="lg" variant="secondary" className="hover:bg-mustard/90 font-bold h-14 px-8 rounded-xl text-lg group text-charcoal w-full sm:w-auto">
+                                                                Get Involved
+                                                                <Heart className="ml-2 group-hover:scale-110 transition-transform fill-charcoal" />
+                                                        </Button>
+                                                </Link>
+                                                <Button 
+                                                        size="lg" 
+                                                        variant="outline" 
+                                                        className="border-white/20 text-white hover:bg-white/10 h-14 px-8 rounded-xl text-lg"
+                                                        onClick={onOpenMission}
+                                                >
                                                         Our Mission
                                                 </Button>
                                         </div>
@@ -194,9 +207,11 @@ function Services() {
                                                                         {service.description}
                                                                 </p>
                                                                 
-                                                                <Button className="w-full bg-charcoal text-white hover:bg-mustard hover:text-charcoal font-bold py-6 rounded-xl transition-all duration-300">
-                                                                        Book Now
-                                                                </Button>
+                                                                <Link href="/donate">
+                                                                        <Button className="w-full bg-charcoal text-white hover:bg-mustard hover:text-charcoal font-bold py-6 rounded-xl transition-all duration-300">
+                                                                                Book Now
+                                                                        </Button>
+                                                                </Link>
                                                         </div>
                                                 </div>
                                         ))}
@@ -241,9 +256,11 @@ function Blog() {
                                                         Knowledge Shared is <br />Community Empowered
                                                 </h3>
                                         </div>
-                                        <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 rounded-full">
-                                                View All Articles
-                                        </Button>
+                                        <a href="#blog">
+                                                <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 rounded-full">
+                                                        View All Articles
+                                                </Button>
+                                        </a>
                                 </div>
 
                                 <div className="grid md:grid-cols-3 gap-8">
@@ -351,9 +368,11 @@ function Events() {
                                                                 <p className="text-gray-600 max-w-xl">{event.description}</p>
                                                         </div>
 
-                                                        <Button className="flex-shrink-0 bg-white border border-gray-200 text-charcoal hover:bg-mustard hover:border-mustard hover:text-charcoal font-bold px-8 py-6 rounded-2xl transition-all">
-                                                                Register Now
-                                                        </Button>
+                                                        <Link href="/donate">
+                                                                <Button className="flex-shrink-0 bg-white border border-gray-200 text-charcoal hover:bg-mustard hover:border-mustard hover:text-charcoal font-bold px-8 py-6 rounded-2xl transition-all">
+                                                                        Register Now
+                                                                </Button>
+                                                        </Link>
                                                 </div>
                                         ))}
                                 </div>
@@ -370,14 +389,21 @@ function Events() {
 }
 
 export default function Index() {
+        const [isMissionOpen, setIsMissionOpen] = useState(false);
+
         return (
                 <main className="min-h-screen bg-white">
                         <Navbar />
-                        <Hero />
+                        <Hero onOpenMission={() => setIsMissionOpen(true)} />
                         <Services />
                         <Blog />
                         <Events />
                         <Footer />
+
+                        <MissionModal 
+                                isOpen={isMissionOpen} 
+                                onOpenChange={setIsMissionOpen} 
+                        />
                 </main>
         );
 }
